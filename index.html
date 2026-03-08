@@ -5,7 +5,7 @@
 <title>Para Mamãe 💖</title>
 
 <style>
-/* body atualizado para mobile */
+/* corpo da página */
 body{
   margin:0;
   min-height:100vh;
@@ -16,9 +16,11 @@ body{
   overflow-y: auto; /* permite scroll no celular */
   -webkit-overflow-scrolling: touch; /* suaviza scroll no iPhone */
   background: linear-gradient(180deg, #FFD6E8, #FFB6C1, #FF8DAA);
+  padding: 20px; /* espaço nas laterais no celular */
+  box-sizing: border-box;
 }
 
-/* estrelas suaves */
+/* estrelas */
 .star{
   position:absolute;
   width:2px;
@@ -38,9 +40,9 @@ body{
   perspective:1000px;
 }
 .envelope{
-  width:500px;  /* carta maior */
+  width:500px;
   height:350px;
-  max-width:90%; /* para mobile */
+  max-width:100%;
   background:#ff4d6d;
   border-radius:15px;
   position:relative;
@@ -80,7 +82,7 @@ body{
   opacity:0;
   transition:1s;
   line-height:1.6;
-  overflow: auto; /* texto fica dentro da carta */
+  overflow: auto;
 }
 .envelope.open .letter{
   transform:translateY(-20px);
@@ -97,12 +99,28 @@ body{
   0%{transform:scale(0);opacity:1;}
   100%{transform:translate(var(--x),var(--y)) scale(1.5);opacity:0;}
 }
+
+/* 📱 ajustes para mobile */
+@media (max-width: 600px){
+  .envelope{
+    width:90%;
+    height:auto;
+  }
+  .flap{
+    border-left:45% solid transparent;
+    border-right:45% solid transparent;
+    border-top:50% solid #ff758f;
+  }
+  .letter{
+    font-size:20px; /* texto maior no celular */
+    padding:20px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- música controlada via JS -->
 <audio id="musica" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
@@ -121,12 +139,10 @@ body{
 </div>
 
 <script>
-/* abrir carta */
 function abrirCarta(el){
   el.classList.toggle("open");
   explodirCoracoes();
 
-  // tocar música ao abrir
   let audio = document.getElementById("musica");
   if(el.classList.contains("open")){
     audio.play();
@@ -136,7 +152,7 @@ function abrirCarta(el){
   }
 }
 
-/* criar estrelas */
+/* estrelas */
 for(let i=0;i<120;i++){
   let star=document.createElement("div");
   star.classList.add("star");
@@ -145,7 +161,7 @@ for(let i=0;i<120;i++){
   document.body.appendChild(star);
 }
 
-/* explosão de corações */
+/* corações */
 function explodirCoracoes(){
   for(let i=0;i<40;i++){
     let heart=document.createElement("div");
