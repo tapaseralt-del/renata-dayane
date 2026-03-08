@@ -13,7 +13,7 @@ body{
   align-items:center;
   font-family:Arial, sans-serif;
   overflow:hidden;
-  /* novo fundo mais bonito */
+  /* fundo degradê rosa */
   background: linear-gradient(180deg, #FFD6E8, #FFB6C1, #FF8DAA);
 }
 
@@ -99,8 +99,9 @@ body{
 
 <body>
 
-<audio autoplay loop>
-<source src="musica.mp3" type="audio/mpeg">
+<!-- música controlada via JS -->
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <div class="scene">
@@ -121,9 +122,18 @@ body{
 function abrirCarta(el){
   el.classList.toggle("open");
   explodirCoracoes();
+
+  // tocar música ao abrir
+  let audio = document.getElementById("musica");
+  if(el.classList.contains("open")){
+    audio.play();
+  } else {
+    audio.pause();
+    audio.currentTime = 0; // reinicia se fechar
+  }
 }
 
-/* estrelas */
+/* criar estrelas */
 for(let i=0;i<120;i++){
   let star=document.createElement("div");
   star.classList.add("star");
