@@ -5,14 +5,16 @@
 <title>Para Mamãe 💖</title>
 
 <style>
+/* body atualizado para mobile */
 body{
   margin:0;
-  height:100vh;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   font-family:Arial, sans-serif;
-  overflow:hidden;
+  overflow-y: auto; /* permite scroll no celular */
+  -webkit-overflow-scrolling: touch; /* suaviza scroll no iPhone */
   background: linear-gradient(180deg, #FFD6E8, #FFB6C1, #FF8DAA);
 }
 
@@ -36,8 +38,9 @@ body{
   perspective:1000px;
 }
 .envelope{
-  width:500px;  /* aumentei */
-  height:350px; /* aumentei */
+  width:500px;  /* carta maior */
+  height:350px;
+  max-width:90%; /* para mobile */
   background:#ff4d6d;
   border-radius:15px;
   position:relative;
@@ -54,7 +57,7 @@ body{
   top:0;
   width:0;
   height:0;
-  border-left:250px solid transparent; /* proporcional ao novo tamanho */
+  border-left:250px solid transparent;
   border-right:250px solid transparent;
   border-top:175px solid #ff758f;
   transform-origin:top;
@@ -72,12 +75,12 @@ body{
   padding:25px;
   box-sizing:border-box;
   text-align:center;
-  font-size:17px; /* letras um pouco maiores */
+  font-size:17px;
   transform:translateY(40px);
   opacity:0;
   transition:1s;
   line-height:1.6;
-  overflow: auto; /* garante que o texto não ultrapasse a carta */
+  overflow: auto; /* texto fica dentro da carta */
 }
 .envelope.open .letter{
   transform:translateY(-20px);
@@ -87,7 +90,7 @@ body{
 /* corações */
 .heart{
   position:absolute;
-  font-size:25px; /* corações maiores */
+  font-size:25px;
   animation:explode 2s linear forwards;
 }
 @keyframes explode{
