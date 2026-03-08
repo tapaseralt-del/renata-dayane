@@ -16,7 +16,7 @@ body{
   overflow-y: auto; /* permite scroll no celular */
   -webkit-overflow-scrolling: touch; /* suaviza scroll no iPhone */
   background: linear-gradient(180deg, #FFD6E8, #FFB6C1, #FF8DAA);
-  padding: 20px; /* espaço nas laterais no celular */
+  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -121,8 +121,9 @@ body{
 
 <body>
 
+<!-- música controlada via JS -->
 <audio id="musica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
+  <source src="Churrasquinho do Menos é Mais - Melhor eu ir_Ligando os Fatos_Sonho de Amor_Deixa eu te querer [zKAAFsovtM4].mp3" type="audio/mpeg">
 </audio>
 
 <div class="scene">
@@ -152,7 +153,7 @@ function abrirCarta(el){
   }
 }
 
-/* estrelas */
+/* criar estrelas */
 for(let i=0;i<120;i++){
   let star=document.createElement("div");
   star.classList.add("star");
@@ -161,7 +162,7 @@ for(let i=0;i<120;i++){
   document.body.appendChild(star);
 }
 
-/* corações */
+/* explosão de corações */
 function explodirCoracoes(){
   for(let i=0;i<40;i++){
     let heart=document.createElement("div");
