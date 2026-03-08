@@ -13,7 +13,6 @@ body{
   align-items:center;
   font-family:Arial, sans-serif;
   overflow:hidden;
-  /* fundo degradê rosa */
   background: linear-gradient(180deg, #FFD6E8, #FFB6C1, #FF8DAA);
 }
 
@@ -37,10 +36,10 @@ body{
   perspective:1000px;
 }
 .envelope{
-  width:340px;
-  height:220px;
+  width:500px;  /* aumentei */
+  height:350px; /* aumentei */
   background:#ff4d6d;
-  border-radius:10px;
+  border-radius:15px;
   position:relative;
   cursor:pointer;
   transform-style:preserve-3d;
@@ -48,16 +47,16 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  box-shadow:0 25px 50px rgba(0,0,0,0.5);
 }
 .flap{
   position:absolute;
   top:0;
   width:0;
   height:0;
-  border-left:170px solid transparent;
-  border-right:170px solid transparent;
-  border-top:110px solid #ff758f;
+  border-left:250px solid transparent; /* proporcional ao novo tamanho */
+  border-right:250px solid transparent;
+  border-top:175px solid #ff758f;
   transform-origin:top;
   transition:1s;
 }
@@ -70,14 +69,15 @@ body{
   height:90%;
   background:white;
   border-radius:10px;
-  padding:20px;
+  padding:25px;
   box-sizing:border-box;
   text-align:center;
-  font-size:15px;
-  transform:translateY(30px);
+  font-size:17px; /* letras um pouco maiores */
+  transform:translateY(40px);
   opacity:0;
   transition:1s;
-  line-height:1.5;
+  line-height:1.6;
+  overflow: auto; /* garante que o texto não ultrapasse a carta */
 }
 .envelope.open .letter{
   transform:translateY(-20px);
@@ -87,7 +87,7 @@ body{
 /* corações */
 .heart{
   position:absolute;
-  font-size:20px;
+  font-size:25px; /* corações maiores */
   animation:explode 2s linear forwards;
 }
 @keyframes explode{
@@ -129,7 +129,7 @@ function abrirCarta(el){
     audio.play();
   } else {
     audio.pause();
-    audio.currentTime = 0; // reinicia se fechar
+    audio.currentTime = 0;
   }
 }
 
